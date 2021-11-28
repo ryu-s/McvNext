@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<OutputPath>..\Output\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|AnyCPU'">
+		<OutputPath>..\Output\Beta\</OutputPath>
+		<DefineConstants>TRACE;BETA</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+		<Optimize>true</Optimize>
+		<DebugType>pdbonly</DebugType>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<ErrorReport>prompt</ErrorReport>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha|AnyCPU'">
+		<OutputPath>..\Output\Alpha\</OutputPath>
+		<DefineConstants>TRACE;DEBUG;ALPHA</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<Optimize>false</Optimize>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\Output\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Akka" Version="1.4.25" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\17LiveSitePlugin\17LiveSitePlugin.csproj" />
+		<ProjectReference Include="..\UnknownLiveSiteCommentProviderPlugin\UnknownLiveSiteCommentProviderPlugin.csproj" />
+		<ProjectReference Include="..\YouTubeLiveSitePlugin\YouTubeLiveSitePlugin.csproj" />
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="powershell.exe &quot;$(SolutionDir)init-output-dir.ps1&quot; -configuration $(ConfigurationName) -solutionDir $(SolutionDir)&#xD;&#xA;powershell.exe &quot;$(SolutionDir)build-plugins.ps1&quot; -configuration $(ConfigurationName) -solutionDir $(SolutionDir)&#xD;&#xA;" />
+	</Target>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	  <Exec Command="powershell.exe &quot;$(SolutionDir)remove-output-dir.ps1&quot; -configuration $(ConfigurationName) -solutionDir $(SolutionDir)" />
+	</Target>
+
+</Project>

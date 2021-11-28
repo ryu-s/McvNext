@@ -1,0 +1,9 @@
+<!--
+このファイルはMcvCoreのPre/Post-build eventの$(SolutionDir)が正常に解決されるために必要。
+https://stackoverflow.com/questions/635346/prebuild-event-in-visual-studio-replacing-solutiondir-with-undefined
+-->
+<Project>
+ <PropertyGroup>
+    <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+ </PropertyGroup>
+</Project>

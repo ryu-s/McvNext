@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Mcv.Plugin.A17Live</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\17LiveSitePluginIF\17LiveSitePluginIF.csproj" />
+    <ProjectReference Include="..\Plugin\Plugin.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Connection\" />
+  </ItemGroup>
+
+</Project>

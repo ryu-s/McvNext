@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>8.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<OutputPath>..\Output\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|AnyCPU'">
+		<OutputPath>..\Output\Beta\</OutputPath>
+		<DefineConstants>TRACE;BETA</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+		<Optimize>true</Optimize>
+		<DebugType>pdbonly</DebugType>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<ErrorReport>prompt</ErrorReport>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Alpha|AnyCPU'">
+		<OutputPath>..\Output\Alpha\</OutputPath>
+		<DefineConstants>TRACE;DEBUG;ALPHA</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<Optimize>false</Optimize>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\Output\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<WarningLevel>4</WarningLevel>
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Akka" Version="1.4.25" />
+		<PackageReference Include="System.Text.Json" Version="5.0.2" />
+	</ItemGroup>
+
+</Project>

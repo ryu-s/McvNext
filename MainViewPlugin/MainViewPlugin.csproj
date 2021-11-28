@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<RootNamespace>Mcv.Plugin.MainViewPlugin</RootNamespace>
+		<EnableDynamicLoading>true</EnableDynamicLoading>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Extended.Wpf.Toolkit" Version="4.1.0" />
+		<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.2" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.37" />
+		<PackageReference Include="SharpVectors" Version="1.7.6" />
+		<PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\17LiveSitePluginIF\17LiveSitePluginIF.csproj" />
+		<ProjectReference Include="..\Plugin\Plugin.csproj">
+			<Private>false</Private>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\YouTubeLiveSitePluginTrait\YouTubeLiveSitePluginTrait.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Site\A17Live\A17LiveOptionsPanel.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="Site\A17Live\A17LiveOptionsPanel.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	    <SubType>Designer</SubType>
+	  </Page>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<RootNamespace>Mcv.SitePlugin.YouTubeLive</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>$(MSBuildProjectName)Tests</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="ryu-s.YouTubeLiveMessageParser" Version="0.0.1" />
+		<PackageReference Include="ryu-s.YouTubeLiveMessageParserIF" Version="0.0.1" />
+		<PackageReference Include="System.Composition.AttributedModel" Version="5.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\McvPluginUtils\McvPluginUtils.csproj" />
+		<ProjectReference Include="..\Plugin\Plugin.csproj" />
+		<ProjectReference Include="..\YouTubeLiveSitePluginTrait\YouTubeLiveSitePluginTrait.csproj" />
+	</ItemGroup>
+
+</Project>
